@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Taskell < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Command-line Kanban board/task manager with support for Trello"
   homepage "https://taskell.app"

@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Mighttpd2 < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "HTTP server"
   homepage "https://www.mew.org/~kazu/proj/mighttpd/en/"

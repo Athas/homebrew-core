@@ -1,7 +1,8 @@
+# coding: utf-8
 require "language/haskell"
 
 class Agda < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Dependently typed functional programming language"
   homepage "https://wiki.portal.chalmers.se/agda/"
@@ -34,21 +35,19 @@ class Agda < Formula
 
   depends_on "cabal-install" => [:build, :test]
   depends_on "emacs"
-  depends_on "ghc"
+  depends_on "ghc@8.6"
   uses_from_macos "zlib"
 
   def install
     # install Agda core
-    install_cabal_package :using => ["alex", "happy", "cpphs"]
+    install_cabal_package
 
     resource("stdlib").stage lib/"agda"
 
     # generate the standard library's bytecode
     cd lib/"agda" do
       cabal_sandbox :home => buildpath, :keep_lib => true do
-        cabal_install "--only-dependencies"
-        cabal_install
-        system "GenerateEverything"
+        system "cabal", "run", "GenerateEverything"
       end
     end
 

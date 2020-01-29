@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Elm < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Functional programming language for building browser-based GUIs"
   homepage "https://elm-lang.org"
@@ -19,14 +19,7 @@ class Elm < Formula
   depends_on "ghc@8.6" => :build
 
   def install
-    # elm-compiler needs to be staged in a subdirectory for the build process to succeed
-    (buildpath/"elm-compiler").install Dir["*"]
-
-    cabal_sandbox do
-      cabal_sandbox_add_source "elm-compiler"
-      cabal_install "--only-dependencies", "--force-reinstalls", "elm"
-      cabal_install "--prefix=#{prefix}", "elm"
-    end
+    install_cabal_package
   end
 
   test do

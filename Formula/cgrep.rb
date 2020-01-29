@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Cgrep < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Context-aware grep for source code"
   homepage "https://github.com/awgn/cgrep"

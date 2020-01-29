@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class PinboardNotesBackup < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Efficiently back up the notes you've saved to Pinboard"
   homepage "https://github.com/bdesham/pinboard-notes-backup"
@@ -17,7 +17,7 @@ class PinboardNotesBackup < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
 
   def install
     install_cabal_package

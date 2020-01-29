@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class HighlightingKate < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Haskell syntax highlighting library, based on the Kate editor"
   homepage "https://github.com/jgm/highlighting-kate"

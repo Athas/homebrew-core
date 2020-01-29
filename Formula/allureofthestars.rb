@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Allureofthestars < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Near-future Sci-Fi roguelike and tactical squad combat game"
   homepage "https://www.allureofthestars.com/"
@@ -22,7 +22,7 @@ class Allureofthestars < Formula
   depends_on "sdl2_ttf"
 
   def install
-    install_cabal_package :using => ["happy", "alex"]
+    install_cabal_package
   end
 
   test do

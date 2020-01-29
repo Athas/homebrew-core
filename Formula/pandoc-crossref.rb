@@ -1,7 +1,8 @@
+# coding: utf-8
 require "language/haskell"
 
 class PandocCrossref < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Pandoc filter for numbering and cross-referencing"
   homepage "https://github.com/lierdakil/pandoc-crossref"

@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Hlint < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Haskell source code suggestions"
   homepage "https://github.com/ndmitchell/hlint"
@@ -19,7 +19,7 @@ class Hlint < Formula
   depends_on "ghc" => :build
 
   def install
-    install_cabal_package :using => ["alex", "happy"]
+    install_cabal_package
     man1.install "data/hlint.1"
   end
 

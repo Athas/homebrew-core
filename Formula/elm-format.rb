@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class ElmFormat < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Elm source code formatter, inspired by gofmt"
   homepage "https://github.com/avh4/elm-format"
@@ -18,7 +18,7 @@ class ElmFormat < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
 
   def build_elm_format_conf
     <<~EOS
@@ -33,13 +33,7 @@ class ElmFormat < Formula
     defaults = buildpath/"generated/Build_elm_format.hs"
     defaults.write(build_elm_format_conf)
 
-    (buildpath/"elm-format").install Dir["*"]
-
-    cabal_sandbox do
-      cabal_sandbox_add_source "elm-format"
-      cabal_install "--only-dependencies", "elm-format"
-      cabal_install "--prefix=#{prefix}", "elm-format"
-    end
+    install_cabal_package
   end
 
   test do

@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Futhark < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Data-parallel functional programming language"
   homepage "https://futhark-lang.org/"
@@ -24,7 +24,7 @@ class Futhark < Formula
   def install
     system "hpack"
 
-    install_cabal_package :using => ["alex", "happy"]
+    install_cabal_package
 
     system "make", "-C", "docs", "man"
     man1.install Dir["docs/_build/man/*.1"]

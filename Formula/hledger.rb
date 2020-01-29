@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Hledger < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Command-line accounting tool"
   homepage "https://hledger.org/"
@@ -30,7 +30,7 @@ class Hledger < Formula
   end
 
   def install
-    install_cabal_package "hledger", "hledger-web", "hledger-ui", "brick-0.50.1", :using => ["happy", "alex"]
+    install_cabal_package
     # help cabal pick a good brick version, https://github.com/Homebrew/homebrew-core/pull/49010#issuecomment-574719702
   end
 

@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Cryptol < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Domain-specific language for specifying cryptographic algorithms"
   homepage "https://www.cryptol.net/"
@@ -17,12 +17,12 @@ class Cryptol < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
   depends_on "z3"
   uses_from_macos "ncurses"
 
   def install
-    install_cabal_package :using => ["alex", "happy"]
+    install_cabal_package
   end
 
   test do

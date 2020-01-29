@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class PandocCiteproc < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Library and executable for using citeproc with pandoc"
   homepage "https://github.com/jgm/pandoc-citeproc"

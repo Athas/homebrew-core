@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Pandoc < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Swiss-army knife of markup format conversion"
   homepage "https://pandoc.org/"
@@ -19,9 +19,7 @@ class Pandoc < Formula
   depends_on "ghc" => :build
 
   def install
-    cabal_sandbox do
-      install_cabal_package
-    end
+    install_cabal_package
     (bash_completion/"pandoc").write `#{bin}/pandoc --bash-completion`
     man1.install "man/pandoc.1"
   end

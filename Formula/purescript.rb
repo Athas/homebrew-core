@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Purescript < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Strongly typed programming language that compiles to JavaScript"
   homepage "http://www.purescript.org"
@@ -28,7 +28,7 @@ class Purescript < Formula
       system "hpack"
     end
 
-    install_cabal_package "-f", "release", :using => ["alex", "happy-1.19.9"]
+    install_cabal_package "-f", "release"
   end
 
   test do

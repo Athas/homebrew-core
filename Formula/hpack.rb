@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Hpack < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Modern format for Haskell packages"
   homepage "https://github.com/sol/hpack"

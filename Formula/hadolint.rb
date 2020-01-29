@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Hadolint < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Smarter Dockerfile linter to validate best practices"
   homepage "https://github.com/hadolint/hadolint"
@@ -16,13 +16,11 @@ class Hadolint < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
+  depends_on "hpack" => :build
 
   def install
-    cabal_sandbox do
-      cabal_install "hpack"
-      system "./.cabal-sandbox/bin/hpack"
-    end
+    system "hpack"
 
     install_cabal_package
   end

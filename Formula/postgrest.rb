@@ -2,7 +2,7 @@ require "language/haskell"
 require "net/http"
 
 class Postgrest < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Serves a fully RESTful API from any existing PostgreSQL database"
   homepage "https://github.com/PostgREST/postgrest"
@@ -18,11 +18,11 @@ class Postgrest < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
   depends_on "postgresql"
 
   def install
-    install_cabal_package :using => ["happy"]
+    install_cabal_package
   end
 
   test do

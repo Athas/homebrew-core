@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Bench < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Command-line benchmark tool"
   homepage "https://github.com/Gabriel439/bench"
@@ -17,7 +17,7 @@ class Bench < Formula
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.6" => :build
 
   def install
     install_cabal_package

@@ -1,7 +1,7 @@
 require "language/haskell"
 
 class Shelltestrunner < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Portable command-line tool for testing command-line programs"
   homepage "https://github.com/simonmichael/shelltestrunner"
@@ -20,7 +20,7 @@ class Shelltestrunner < Formula
   depends_on "ghc" => :build
 
   def install
-    install_cabal_package :using => ["happy"]
+    install_cabal_package
   end
 
   test do

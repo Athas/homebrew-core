@@ -1,7 +1,8 @@
+# coding: utf-8
 require "language/haskell"
 
 class Dhall < Formula
-  include Language::Haskell::Cabal
+  include Language::Haskell::CabalV2
 
   desc "Interpreter for the Dhall language"
   homepage "https://dhall-lang.org/"
